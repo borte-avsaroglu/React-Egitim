@@ -1,7 +1,7 @@
-import { link } from 'fs'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { IUser } from '../models/IUser'
+import { getUser } from '../utils/util'
 
 function Dashboard() {
   const links = [

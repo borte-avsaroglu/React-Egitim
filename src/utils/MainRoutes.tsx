@@ -6,6 +6,7 @@ import Register from '../pages/Register';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import Sample from '../pages/Sample';
+import Control from '../pages/Control';
 
 
 export const route =
@@ -13,7 +14,7 @@ export const route =
     <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard' element={<Control item={<Dashboard />} />} />
         <Route path='/sample/:id' element={<Sample />} />
         <Route path='*' element={<NotFound />} />
     </Routes>
