@@ -2,7 +2,7 @@ import "../styles/Login.css";
 import { FormEvent, useState } from "react";
 import { encrypt, validUserLogin } from "../utils/util";
 import { NavLink, useNavigate } from "react-router-dom";
-import { login } from "../services/cutomer";
+import { login } from "../services/cutomerService";
 
 function Login() {
 

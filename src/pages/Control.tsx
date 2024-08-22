@@ -10,7 +10,7 @@ function Control( props: {item: JSX.Element}) {
      { userObj 
      ?
       <>
-        <Navbar />
+        <Navbar user={userObj}/>
         {props.item}
       </>  
      : 

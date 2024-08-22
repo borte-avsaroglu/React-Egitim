@@ -1,6 +1,20 @@
 import React from 'react'
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { ICustomer } from '../models/ICustomer';
+import { useSelector } from 'react-redux';
+import { StateType } from '../useRedux/store';
 
-function Navbar() {
+function Navbar(props: {user: ICustomer}) {
+
+  //useRedux
+  const selector = useSelector((items: StateType) => items.LikesReducer)
+
+  const navigate = useNavigate()
+  const fncLogout = () => {
+    localStorage.removeItem('user')
+    navigate('/', {replace: true})
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -21,14 +35,10 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
+              <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
+              <NavLink className="nav-link" to="/likes">Likes</NavLink>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -55,15 +65,16 @@ function Navbar() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
+                  <a role='button' onClick={fncLogout} className="dropdown-item" href="#">
+                    Logout
                   </a>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">
-                Disabled
+                {props.user.firstName + ' ' + props.user.lastName}
+                ({selector.length})
               </a>
             </li>
           </ul>
