@@ -5,6 +5,7 @@ import { getUser } from '../utils/util'
 import { allProduct } from '../services/productService';
 import { Product } from '../models/IProducts';
 import ProductItem from '../components/ProductItem';
+import Seo from '../components/Seo';
 
 function Dashboard() {
   // const links = [
@@ -50,6 +51,7 @@ function Dashboard() {
       <hr />
       <NavLink to={'/sample/100?userID=50&cid=150'}>Query String</NavLink>
       <button onClick={sendObj} className='btn btn-danger'>Send Object</button> */}
+      <Seo title={'Dashboard'} desc={'Dashboard Desc'} />
       <div className="row">
         {arr.map((item, index) => 
           <ProductItem key={index} item={item} />

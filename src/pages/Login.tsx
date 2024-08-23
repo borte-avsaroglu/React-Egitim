@@ -4,6 +4,7 @@ import { encrypt, validUserLogin } from "../utils/util";
 import { NavLink, useNavigate } from "react-router-dom";
 import { login } from "../services/cutomerService";
 import { Context } from "../utils/AppContext";
+import Seo from "../components/Seo";
 
 function Login() {
 
@@ -43,6 +44,7 @@ function Login() {
 
     return (
       <>
+        <Seo title={'Login'} desc={'Login Desc'}/>
         <div className="row">
           <div className="col-sm-4"></div>
           <div className="col-sm-4">
