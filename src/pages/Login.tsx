@@ -1,11 +1,13 @@
 import "../styles/Login.css";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { encrypt, validUserLogin } from "../utils/util";
 import { NavLink, useNavigate } from "react-router-dom";
 import { login } from "../services/cutomerService";
+import { Context } from "../utils/AppContext";
 
 function Login() {
 
+    const context = useContext(Context)
     const navigate = useNavigate()
 
     // useState
@@ -20,6 +22,7 @@ function Login() {
             setErrorMessage('') // donecek olan status kodunu sifirlamak amaci ile ilk once bosaltiriz.
             login(username,password).then(res => {
                 const dt = res.data
+                context.setName(dt.firstName + ' ' + dt.lastName)
                 const stUser = JSON.stringify(dt)
                 const encUser = encrypt(stUser)
                 localStorage.setItem('user', encUser)

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { ICustomer } from '../models/ICustomer';
 import { useSelector } from 'react-redux';
 import { StateType } from '../useRedux/store';
+import { Context } from '../utils/AppContext';
 
 function Navbar(props: {user: ICustomer}) {
 
+  //useContex
+  const context = useContext(Context)
+  
   //useRedux
   const selector = useSelector((items: StateType) => items.LikesReducer)
 
@@ -73,8 +77,7 @@ function Navbar(props: {user: ICustomer}) {
             </li>
             <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">
-                {props.user.firstName + ' ' + props.user.lastName}
-                ({selector.length})
+                {props.user.firstName + ' ' + props.user.lastName} ({selector.length}) - {context.name}
               </a>
             </li>
           </ul>
